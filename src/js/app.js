@@ -10,6 +10,64 @@ class Application {
 
         $(document).ready(function() {
 
+
+            let todoItems = [];
+
+            function addTodoItem(text) {
+                const todoObject = {
+                    text,
+                    checked: false,
+                    id: Date.now(),
+                };
+
+                todoItems.push(todoObject);
+                console.log(todoItems);
+
+                $('.board-content').append(
+                    ` <div class="board-item-wrapper">
+                         <div class="board-item">
+                            <div class="board-item__date">20.09.2019</div>
+                             <div class="board-item__title">
+                                ${todoObject.text}
+                             </div>
+                             <div class="board-item-action">
+                                 <ul>
+                                     <li class="action action--open">
+                                         <i class="zmdi zmdi-eye"></i>
+                                     </li>
+                                     <li class="action action--edit">
+                                         <i class="zmdi zmdi-edit"></i>
+                                     </li>
+                                     <li class="action action--delete">
+                                         <i class="zmdi zmdi-close"></i>
+                                     </li>
+                                 </ul>
+                             </div>
+                             <div class="board-item__text">
+                                 <textarea name="1" cols="30" rows="10"></textarea> Тут буде відповідний текст (опис) задачі, який буде прихований і щоб його побачити потрібно
+                                 атиснути на кнопку "Читати"
+                             </div>
+                         </div>
+                     </div>`
+                );
+            }
+
+            function removeTodoItem (item) {
+                item.remove();
+            }
+
+            $('.describe-block-btn').on('click' , function(e) {
+                e.preventDefault();
+                const input = $('.describe-block input');
+                const text = $('.describe-block input').val().trim();
+
+                if (text !== '') {
+                    addTodoItem(text);
+                    input.val('');
+                }
+            });
+
+
             $('.describe-block textarea').on('keyup', function() {
                 const _this = $(this);
                 const text = _this.val();
@@ -17,49 +75,49 @@ class Application {
 
 
             $('.describe-block-btn').on('click' , function() {
-                const _this = $(this);
-                const wrapper = _this.closest('.describe-block');
-                const text = wrapper.find('.input-wrapper input');
-                const textVal = text.val();
+                // const _this = $(this);
+                // const wrapper = _this.closest('.describe-block');
+                // const text = wrapper.find('.input-wrapper input');
+                // const textVal = text.val();
 
                 // message.text(text);
 
-                if(textVal.length >= 1) {
-
-                    text.removeClass('error');
-                    $('.board-content').append(`
-                  <div class="board-item-wrapper">
-                        <div class="board-item">
-                            <div class="board-item__date">20.09.2019</div>
-                            <div class="board-item__title">
-                                Тут буде введений заголовк, який має дубвюатися, чи просто виводитися у два рядки
-                            </div>
-                            <div class="board-item-action">
-                                <ul>
-                                    <li class="action action--open">
-                                        <i class="zmdi zmdi-eye"></i>
-                                    </li>
-                                    <li class="action action--edit">
-                                        <i class="zmdi zmdi-edit"></i>
-                                    </li>
-                                    <li class="action action--delete">
-                                        <i class="zmdi zmdi-close"></i>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="board-item__text">
-                                <textarea name="1" cols="30" rows="10"></textarea> Тут буде відповідний текст (опис) задачі, який буде прихований і щоб його побачити потрібно
-                                атиснути на кнопку "Читати"
-                            </div>
-                        </div>
-                    </div>
-                `);
-
-
-                } else {
-                    text.addClass('error');
-                    alert('Питаю щось!?');
-                }
+                // if(textVal.length >= 1) {
+                //
+                //     text.removeClass('error');
+                //     $('.board-content').append(`
+                //   <div class="board-item-wrapper">
+                //         <div class="board-item">
+                //             <div class="board-item__date">20.09.2019</div>
+                //             <div class="board-item__title">
+                //                 Тут буде введений заголовк, який має дубвюатися, чи просто виводитися у два рядки
+                //             </div>
+                //             <div class="board-item-action">
+                //                 <ul>
+                //                     <li class="action action--open">
+                //                         <i class="zmdi zmdi-eye"></i>
+                //                     </li>
+                //                     <li class="action action--edit">
+                //                         <i class="zmdi zmdi-edit"></i>
+                //                     </li>
+                //                     <li class="action action--delete">
+                //                         <i class="zmdi zmdi-close"></i>
+                //                     </li>
+                //                 </ul>
+                //             </div>
+                //             <div class="board-item__text">
+                //                 <textarea name="1" cols="30" rows="10"></textarea> Тут буде відповідний текст (опис) задачі, який буде прихований і щоб його побачити потрібно
+                //                 атиснути на кнопку "Читати"
+                //             </div>
+                //         </div>
+                //     </div>
+                // `);
+                //
+                //
+                // } else {
+                //     text.addClass('error');
+                //     alert('Питаю щось!?');
+                // }
 
 
             });
@@ -80,7 +138,10 @@ class Application {
 
             $('.board-item-action .action--delete').on('click', function() {
                 const _this = $(this);
+                const wrapper = _this.closest($(document).find('.board-item-wrapper'));
                 // actionElem(_this);
+                removeTodoItem(wrapper);
+                console.log(1);
                 showMessage();
             });
 
