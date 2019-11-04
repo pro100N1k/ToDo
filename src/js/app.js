@@ -1,5 +1,7 @@
 import { detectBrowser } from './_helpers';
 
+var moment = require('moment');
+
 class Application {
     constructor() {
         Application.init();
@@ -9,7 +11,6 @@ class Application {
         // INIT YOUR PLUGINS
 
         $(document).ready(function() {
-
 
             let todoItems = [];
 
@@ -52,9 +53,17 @@ class Application {
                 );
             }
 
+            function show (array) {
+                $('.board-body').html(array);
+            }
+
             function removeTodoItem (item) {
                 item.remove();
             }
+
+            // $('.js-add-item').on('click', function() {
+            //     show(todoItems);
+            // });
 
             $('.describe-block-btn').on('click' , function(e) {
                 e.preventDefault();
@@ -169,6 +178,7 @@ class Application {
                 }
             }
         });
+
     };
 
     static initializeModules() {

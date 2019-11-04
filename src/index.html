@@ -22,109 +22,113 @@
 
     <!--ToDoList-->
     <div class="wrapper">
-        <div class="board-wrapper">
+        <div class="board">
 
-            <div class="board-title">
-                ToDOList
-            </div>
+            <div class="board-head">
 
-            <div class="board">
+                <div class="board-head__title">
+                    ToDOList
+                </div>
 
-                <div class="describe-block">
-                    <div class="input-wrapper">
-                        <div class="input__icon">
+                <div class="board-head-info">
+                    <div class="head__item input-wrapper">
+                        <div class="input-wrapper__icon">
                             <i class="zmdi zmdi-font"></i>
                         </div>
-                        <input type="text" placeholder="Enter task">
+                        <input type="text" class="input-wrapper__input" placeholder="Enter task">
                     </div>
-                    <div class="input-btn-wrapper">
-                        <button class="btn describe-block-btn input-btn">Add</button>
+
+                    <div class="head__item input-btn-wrapper">
+                        <button class="btn head__btn input__btn js-add-item">Add</button>
                     </div>
                 </div>
 
+            </div>
 
-                <div class="board-content">
-                    <div class="board-item-wrapper">
-                        <div class="board-item">
-                            <div class="board-item__date">20.09.2019</div>
-                            <div class="board-item__title">
-                                Тут буде введений заголовк, який має дубвюатися, чи просто виводитися у два рядки
-                            </div>
-                            <div class="board-item-action">
-                                <ul>
-                                    <li class="action action--open">
-                                        <i class="zmdi zmdi-eye"></i>
-                                    </li>
-                                    <li class="action action--edit">
-                                        <i class="zmdi zmdi-edit"></i>
-                                    </li>
-                                    <li class="action action--delete">
-                                        <i class="zmdi zmdi-close"></i>
-                                    </li>
-                                </ul>
-                            </div>
-
+            <div class="board-body">
+                <div class="content-item-wrapper">
+                    <div class="content-item">
+                        <div class="content-item__date">20.09.2019</div>
+                        <div class="content-item__action">
+                            <ul>
+                                <li class="action action--open">
+                                    <i class="zmdi zmdi-eye"></i>
+                                </li>
+                                <li class="action action--edit">
+                                    <i class="zmdi zmdi-edit"></i>
+                                </li>
+                                <li class="action action--delete">
+                                    <i class="zmdi zmdi-close"></i>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="board-item__text">
+                        <div class="content-item__title">
+                            Тут буде введений заголовк, який має дубвюатися, чи просто виводитися у два рядки
+                        </div>
+                    </div>
+                    <div class="content-item__text">
                             <textarea name="1" cols="30" rows="10" readonly>
                              Тут буде відповідний текст (опис) задачі, який буде прихований
                         і щоб його побачити потрібно атиснути на кнопку "Читати"
                         </textarea>
-                        </div>
-                    </div>
-                    <div class="board-item-wrapper">
-                        <div class="board-item">
-                            <div class="board-item__date">20.09.2019</div>
-                            <div class="board-item__title">
-                                Тут буде введений заголовк, який має дубвюатися, чи просто виводитися у два рядки
-                            </div>
-                            <div class="board-item-action">
-                                <ul>
-                                    <li class="action action--open">
-                                        <i class="zmdi zmdi-eye"></i>
-                                    </li>
-                                    <li class="action action--edit">
-                                        <i class="zmdi zmdi-edit"></i>
-                                    </li>
-                                    <li class="action action--delete">
-                                        <i class="zmdi zmdi-close"></i>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="board-item__text">
-                                <textarea name="1" cols="30" rows="10"></textarea> Тут буде відповідний текст (опис) задачі, який буде прихований і щоб його побачити потрібно
-                                атиснути на кнопку "Читати"
-                            </div>
-                        </div>
-                    </div>
-                    <div class="board-item-wrapper">
-                        <div class="board-item">
-                            <div class="board-item__date">20.09.2019</div>
-                            <div class="board-item__title">
-                                Тут буде введений заголовк, який має дубвюатися, чи просто виводитися у два рядки
-                            </div>
-                            <div class="board-item-action">
-                                <ul>
-                                    <li class="action action--open">
-                                        <i class="zmdi zmdi-eye"></i>
-                                    </li>
-                                    <li class="action action--edit">
-                                        <i class="zmdi zmdi-edit"></i>
-                                    </li>
-                                    <li class="action action--delete">
-                                        <i class="zmdi zmdi-close"></i>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="board-item__text">
-                                <textarea name="1" cols="30" rows="10"></textarea> Тут буде відповідний текст (опис) задачі, який буде прихований і щоб його побачити потрібно
-                                атиснути на кнопку "Читати"
-                            </div>
-                        </div>
                     </div>
                 </div>
-
+                <div class="content-item-wrapper">
+                    <div class="content-item">
+                        <div class="content-item__date">20.09.2019</div>
+                        <div class="content-item__action">
+                            <ul>
+                                <li class="action action--open">
+                                    <i class="zmdi zmdi-eye"></i>
+                                </li>
+                                <li class="action action--edit">
+                                    <i class="zmdi zmdi-edit"></i>
+                                </li>
+                                <li class="action action--delete">
+                                    <i class="zmdi zmdi-close"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="content-item__title">
+                            Тут буде введений заголовк, який має дубвюатися, чи просто виводитися у два рядки
+                        </div>
+                    </div>
+                    <div class="content-item__text">
+                            <textarea name="1" cols="30" rows="10" readonly>
+                             Тут буде відповідний текст (опис) задачі, який буде прихований
+                        і щоб його побачити потрібно атиснути на кнопку "Читати"
+                        </textarea>
+                    </div>
+                </div>
+                <div class="content-item-wrapper">
+                    <div class="content-item">
+                        <div class="content-item__date">20.09.2019</div>
+                        <div class="content-item__action">
+                            <ul>
+                                <li class="action action--open">
+                                    <i class="zmdi zmdi-eye"></i>
+                                </li>
+                                <li class="action action--edit">
+                                    <i class="zmdi zmdi-edit"></i>
+                                </li>
+                                <li class="action action--delete">
+                                    <i class="zmdi zmdi-close"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="content-item__title">
+                            Тут буде введений заголовк, який має дубвюатися, чи просто виводитися у два рядки
+                        </div>
+                    </div>
+                    <div class="content-item__text">
+                            <textarea name="1" cols="30" rows="10" readonly>
+                             Тут буде відповідний текст (опис) задачі, який буде прихований
+                        і щоб його побачити потрібно атиснути на кнопку "Читати"
+                        </textarea>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 
