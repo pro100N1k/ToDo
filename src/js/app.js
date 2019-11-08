@@ -16,16 +16,25 @@ class Application {
 
             function addTodoItem(text) {
                 const todoObject = {
+                    id: Date.now(),
                     text,
                     checked: false,
-                    id: Date.now(),
+                    date: Date.now(),
                 };
-
 
                 todoItems.push(
                     ` <div class="content-item-wrapper">
                          <div class="content-item">
-                            <div class="content-item__date">20.09.2019</div>
+                         
+                         <div class="input-checkbox-wrapper">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                         </div>
+                         
+                         <div class="content-item-info">
+                          <div class="content-item__date">
+                               ${todoObject.date}
+                             </div>
                              <div class="content-item__action">
                                  <ul>
                                      <li class="action action--open">
@@ -34,7 +43,7 @@ class Application {
                                      <li class="action action--edit">
                                          <i class="zmdi zmdi-edit"></i>
                                      </li>
-                                     <li class="action action--delete">
+                                     <li class="action js-action-delete">
                                          <i class="zmdi zmdi-close"></i>
                                      </li>
                                  </ul>
@@ -46,17 +55,27 @@ class Application {
                                  <textarea name="1" cols="30" rows="10"></textarea> Тут буде відповідний текст (опис) задачі, який буде прихований і щоб його побачити потрібно
                                  атиснути на кнопку "Читати"
                              </div>
+                          </div>
+                            
+                             
                          </div>
                      </div>`
                 );
 
-                console.log(todoItems);
-
             }
 
             function showTasks () {
-                $('.board-body').html(todoItems);
+                localStorage.setItem("tasks", JSON.stringify(todoItems));
+                let storedNames = JSON.parse(localStorage.getItem("tasks"));
+                $('.board-body').html(storedNames);
             }
+
+            // function deleteTask() {
+            //     const buttonDelete = document.find('.js-action-delete');
+            //     const wrapper = buttonDelete.closest('.content-item-wrapper');
+            //
+            //     wrapper.remove();
+            // }
 
             $('.js-add-item').on('click', function(e) {
                 e.preventDefault();
@@ -69,6 +88,28 @@ class Application {
                     showTasks();
                 }
 
+            });
+
+            $(document).on('click', '.input-checkbox-wrapper', function() {
+                const _this = $(this);
+                const wrapper = _this.closest('.content-item');
+
+                if (!wrapper.hasClass('checked')) {
+                    wrapper.addClass('checked');
+                } else {
+                    wrapper.removeClass('checked');
+                }
+                console.log(1);
+            });
+
+            // Rewrite to array element (now work only on page)
+
+            $(document).on('click','.js-action-delete', function() {
+
+                const _this = $(this);
+                const wrapper = _this.closest('.content-item-wrapper');
+
+                wrapper.remove();
 
             });
 
