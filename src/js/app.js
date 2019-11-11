@@ -16,7 +16,6 @@ class Application {
 
             function addTodoItem(text) {
                 const todoObject = {
-                    id: Date.now(),
                     text,
                     checked: false,
                     date: Date.now(),
@@ -62,12 +61,44 @@ class Application {
                      </div>`
                 );
 
+                function setIdTaks(){
+                    let i=0;
+                    $('.board-body').find('.content-item-wrapper').each(function(){
+                        let id = i;
+                        $(this).attr('id',id);
+                        ++i;
+                    });
+                };
+
             }
 
             function showTasks () {
+
                 localStorage.setItem("tasks", JSON.stringify(todoItems));
                 let storedNames = JSON.parse(localStorage.getItem("tasks"));
                 $('.board-body').html(storedNames);
+
+                console.log(todoItems);
+            }
+
+            function deleteTask (mas) {
+
+                mas.splice(2,1);
+                // for (let i = 0; i < mas.length; i++) {
+                //     _this.closest('.content-item-wrapper').remove();
+                // }
+
+                return mas;
+            }
+
+            function clearTasks () {
+                todoItems = [];
+                showTasks();
+                $('.board-body').append(
+                    `<div class="body-info">
+                        <div class="body__text">Enter tour first task</div>
+                    </div>`
+                );
             }
 
             // function deleteTask() {
@@ -90,6 +121,16 @@ class Application {
 
             });
 
+            $(document).on('click', '.js-action-delete', function() {
+                const _this = $(this);
+                const wrapper = _this.closest('.content-item-wrapper');
+
+                wrapper.remove();
+
+                deleteTask(todoItems);
+                showTasks();
+            });
+
             $(document).on('click', '.input-checkbox-wrapper', function() {
                 const _this = $(this);
                 const wrapper = _this.closest('.content-item');
@@ -102,15 +143,17 @@ class Application {
                 console.log(1);
             });
 
-            // Rewrite to array element (now work only on page)
-
             $(document).on('click','.js-action-delete', function() {
 
-                const _this = $(this);
-                const wrapper = _this.closest('.content-item-wrapper');
+                // const _this = $(this);
+                // const wrapper = _this.closest('.content-item-wrapper');
+                //
+                // wrapper.remove();
 
-                wrapper.remove();
+            });
 
+            $('.board-footer').on('click', function() {
+                clearTasks();
             });
 
         });

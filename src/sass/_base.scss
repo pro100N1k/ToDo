@@ -413,6 +413,24 @@ input, textarea {
         }
       }
     }
+
+    &-footer {
+      padding: 2.5rem;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: rgba($baseColor, 0.8);
+      cursor: pointer;
+      .footer {
+        &__title {
+          font-size: 1.4rem;
+          font-weight: 900;
+          color: #fff;
+          text-align: center;
+        }
+      }
+    }
   }
 }
 
